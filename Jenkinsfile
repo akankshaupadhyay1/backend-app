@@ -84,7 +84,7 @@ pipeline {
 
         stage('Push to Docker Hub') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'my_user_name', passwordVariable: 'my_password')]) {
+                withCredentials([usernamePassword(credentialsId: 'my-dockerhub-creds', usernameVariable: 'my_user_name', passwordVariable: 'my_password')]) {
                     sh 'echo $my_password | docker login -u $my_user_name --password-stdin'
                     sh 'docker push $DOCKER_IMAGE'
                 }
@@ -97,7 +97,7 @@ pipeline {
                 GIT_USER_NAME = "uakansha1"
             }
             steps {
-                withCredentials([usernamePassword(credentialsId: 'github', usernameVariable: 'my_user_name', passwordVariable: 'my_password')]) {
+                withCredentials([usernamePassword(credentialsId: 'au-github', usernameVariable: 'my_user_name', passwordVariable: 'my_password')]) {
                     sh """
                         echo "✏️ Updating backend image tag in backend-deployment.yaml..."
                         cd target/backend-app
