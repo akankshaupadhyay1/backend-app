@@ -96,7 +96,7 @@ steps {
                 GIT_USER_NAME = "akankshaupadhyay1"
             }
             steps {
-                withCredentials([usernamePassword(credentialsId: 'au-github', usernameVariable: 'my_user_name', passwordVariable: 'my_password')]) {
+withCredentials([string(credentialsId: 'au-github', variable: 'GITHUB_TOKEN')]) { 
                     sh """
                         echo "✏️ Updating backend image tag in backend-deployment.yaml..."
                         cd target/backend-app
@@ -112,3 +112,6 @@ steps {
         }
     }
 }
+
+
+
