@@ -22,7 +22,7 @@ pipeline {
             steps {
                 sh '''
                     cd target
-                    git clone https://github.com/uakansha1/backend-app.git
+                    git clone https://github.com/akankshaupadhyay1/backend-app.git
                 '''
             }
         }
@@ -94,7 +94,7 @@ pipeline {
         stage('Update Helm Chart') {
             environment {
                 GIT_REPO_NAME = "backend-app"
-                GIT_USER_NAME = "uakansha1"
+                GIT_USER_NAME = "akankshaupadhyay1"
             }
             steps {
                 withCredentials([usernamePassword(credentialsId: 'au-github', usernameVariable: 'my_user_name', passwordVariable: 'my_password')]) {
@@ -102,7 +102,7 @@ pipeline {
                         echo "✏️ Updating backend image tag in backend-deployment.yaml..."
                         cd target/backend-app
                         git config user.email "uakansha@example.com"
-                        git config user.name "uakansha1"
+                        git config user.name "akankshaupadhyay1"
                         sed -i "s|\\(image: uakansha1/loan-predict-backend:\\).*|\\1${env.BUILD_ID}|" k8s-commands/backend-deployment.yaml
                         git add k8s-commands/backend-deployment.yaml
                         git commit -m "🚀 Update backend image to ${env.BUILD_ID}"
