@@ -100,12 +100,12 @@ withCredentials([string(credentialsId: 'au-github', variable: 'GITHUB_TOKEN')]) 
                     sh """
                         echo "✏️ Updating backend image tag in backend-deployment.yaml..."
                         cd target/backend-app
-                        git config user.email "uakansha@example.com"
+                        git config user.email "uakansha1@gmail.com"
                         git config user.name "akankshaupadhyay1"
                         sed -i "s|\\(image: uakansha1/loan-predict-backend:\\).*|\\1${env.BUILD_ID}|" k8s-commands/backend-deployment.yaml
                         git add k8s-commands/backend-deployment.yaml
                         git commit -m "🚀 Update backend image to ${env.BUILD_ID}"
-                        git push https://${my_user_name}:${my_password}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME}.git HEAD:main
+                        git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME}.git HEAD:main
                     """
                 }
             }
