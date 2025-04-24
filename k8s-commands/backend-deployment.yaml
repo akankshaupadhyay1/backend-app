@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
         - name: backend
-          image: uakansha1/loan-predict-backend:latest
+          image: uakansha1/loan-predict-backend:17
           ports:
             - containerPort: 80
