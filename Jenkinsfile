@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'xalien073/custom-dind-python-sonar-trivy:8'
+            image 'xalien073/custom-dind-python-sonar-trivy:11'
             args '--user root -v /var/run/docker.sock:/var/run/docker.sock'
         }
     }
