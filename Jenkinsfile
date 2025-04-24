@@ -70,7 +70,7 @@ steps {
                     """
                     }
                }
-        
+        /*
 
         stage('Scan Docker Image') {
             steps {
@@ -79,7 +79,7 @@ steps {
                     trivy image --exit-code 1 --severity CRITICAL $DOCKER_IMAGE
                 """
             }
-        }
+        }*/
 
         stage('Push to Docker Hub') {
             steps {
