@@ -63,8 +63,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                dir('target/backend-app') {
-                    sh """
+                sh """
                         docker --version
                         echo "🐳 Building backend Docker image..."
                         docker build -t $DOCKER_IMAGE .
